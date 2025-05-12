@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduMarketHub - Courses</title>
+
+    <!-- Global & Page Styles -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/courses.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <!-- Sidebar (reuse) -->
+      <aside class="sidebar">
+        <h2 class="logo">EduMarketHub</h2>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="upload.html">Upload Content</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="#">My Materials</a></li>
+            <li><a href="#">Earnings</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1>Browse Courses</h1>
+
+        <!-- Search and Filter Section -->
+        <section class="search-filter">
+          <input type="text" id="search" placeholder="Search for courses..." />
+          <select id="category-filter">
+            <option value="">All Categories</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="html-css">HTML & CSS</option>
+            <option value="react">React</option>
+          </select>
+        </section>
+
+        <!-- Course List -->
+        <section class="course-list" id="courseList">
+          <!-- Course items will be populated here dynamically -->
+        </section>
+
+        <!-- Pagination -->
+        <section class="pagination">
+          <button class="prev">Previous</button>
+          <button class="next">Next</button>
+        </section>
+      </main>
+    </div>
+
+    <!-- JS -->
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/courses.js"></script>
+  </body>
+</html>

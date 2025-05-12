@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduMarketHub - Upload Content</title>
+
+    <!-- Global & Page Styles -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/upload.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <!-- Sidebar (reuse) -->
+      <aside class="sidebar">
+        <h2 class="logo">EduMarketHub</h2>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="upload.html" class="active">Upload Content</a></li>
+            <li><a href="#">My Materials</a></li>
+            <li><a href="#">Earnings</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h1>Upload New Content</h1>
+
+        <!-- Upload Form -->
+        <section class="upload-form">
+          <form id="uploadForm" enctype="multipart/form-data">
+            <label for="title">Content Title:</label>
+            <input type="text" id="title" required />
+
+            <label for="description">Description:</label>
+            <textarea id="description" rows="4" required></textarea>
+
+            <label for="category">Category:</label>
+            <select id="category" required>
+              <option value="course">Course</option>
+              <option value="notes">Notes</option>
+              <option value="ebook">Ebook</option>
+            </select>
+
+            <label for="file">Upload File:</label>
+            <input type="file" id="file" required />
+
+            <button type="submit">Upload Content</button>
+          </form>
+        </section>
+
+        <!-- Preview Section (Optional) -->
+        <section class="preview">
+          <h2>Content Preview</h2>
+          <p><strong>Title:</strong> <span id="preview-title">N/A</span></p>
+          <p>
+            <strong>Description:</strong>
+            <span id="preview-description">N/A</span>
+          </p>
+          <p><strong>File:</strong> <span id="preview-file">N/A</span></p>
+        </section>
+      </main>
+    </div>
+
+    <!-- JS -->
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/upload.js"></script>
+  </body>
+</html>
