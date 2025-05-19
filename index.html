@@ -3,106 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMarketHub - Home</title>
+    <title>EduMArketHub</title>
 
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <!-- Home Page Styles -->
-    <link rel="stylesheet" href="assets/css/home.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/nav.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/home.css" />
   </head>
   <body>
-    <!-- Header -->
-    <header class="site-header">
-      <div class="container">
-        <h1 class="logo">EduMarketHub</h1>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="courses.html">Browse Courses</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
+    <!-- header -->
+    <header class="navbar">
+      <div class="logo">
+        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#" class="join-btn">Join Us</a>
+    </header>
+
+    <!-- hero -->
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-subtitle">Learn From Home</h1>
+        <h1 class="hero-title">Find Your Course</h1>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Keyword" />
+          <button class="search-btn">Search</button>
+        </div>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <h2>Buy & Sell Educational Resources Easily</h2>
-        <p>Empowering educators and learners through a fair marketplace.</p>
-        <a href="register.html" class="btn-primary">Join Now</a>
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="./assets/img/home-1.jpg" alt="About Us" />
+        </div>
+        <div class="about-content">
+          <h6 class="section-subtitle">About Us</h6>
+          <h1 class="section-title">
+            First Choice For Online Education Anywhere
+          </h1>
+          <p>Tempor erat elitr at rebum... Amet erat amet et magna</p>
+        </div>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features animate">
-      <div class="container">
-        <h3>Why EduMarketHub?</h3>
-        <div class="features-grid">
+    <!-- Feature Section -->
+    <section class="feature-section">
+      <div class="feature-container">
+        <div class="feature-text">
+          <h6 class="section-subtitle">Why Choose Us?</h6>
+          <h1 class="section-title">Why You Should Start Learning with Us?</h1>
+
           <div class="feature-item">
-            <h4>Monetize Your Knowledge</h4>
-            <p>Upload and sell your own courses and notes with full control.</p>
+            <div class="icon-box blue">
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h4>Skilled Instructors</h4>
+              <p>Labore rebum duo est Sit dolore eos sit tempor eos stet...</p>
+            </div>
           </div>
+
           <div class="feature-item">
-            <h4>Affordable Learning</h4>
-            <p>
-              Access high-quality educational materials from various educators.
+            <div class="icon-box dark"><i class="fa fa-certificate"></i></div>
+            <div>
+              <h4>International Certificate</h4>
+              <p>Labore rebum duo est Sit dolore eos sit tempor eos stet...</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="icon-box yellow"><i class="fa fa-book-reader"></i></div>
+            <div>
+              <h4>Online Classes</h4>
+              <p>Labore rebum duo est Sit dolore eos sit tempor eos stet...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-image">
+          <img src="./assets/img/home-2.jpg" alt="Feature Image" />
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-container">
+          <!-- About Section -->
+          <div class="footer-column">
+            <h1 class="footer-logo">EduMarketHub</h1>
+            <p class="footer-desc">
+              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
+              at et diam est, tempor rebum ipsum sit ea tempor stet et
+              consetetur dolores.
             </p>
           </div>
-          <div class="feature-item">
-            <h4>Community Ratings</h4>
-            <p>Choose content based on trusted reviews and feedback.</p>
+        </div>
+
+        <div class="footer-container">
+          <!-- Contact Info -->
+          <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            </p>
+            <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fa fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-column">
+            <h3>Our Courses</h3>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Apps Design</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Featured Courses -->
-    <section class="featured-courses animate">
-      <div class="container">
-        <h3>Featured Courses</h3>
-        <div class="courses-grid">
-          <div class="course-card">
-            <h4>HTML & CSS Basics</h4>
-            <p>By John Doe</p>
-            <a href="course-detail.html">View Details</a>
-          </div>
-          <div class="course-card">
-            <h4>Intro to Accounting</h4>
-            <p>By Jane Smith</p>
-            <a href="course-detail.html">View Details</a>
-          </div>
-          <div class="course-card">
-            <h4>JavaScript for Beginners</h4>
-            <p>By Alex Lee</p>
-            <a href="course-detail.html">View Details</a>
-          </div>
+      <div class="footer-bottom">
+        <div class="footer-container bottom">
+          <p>&copy; EduMarketHub. All Rights Reserved.</p>
+          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
         </div>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta animate">
-      <div class="container">
-        <h3>Start Earning or Learning Today!</h3>
-        <a href="register.html" class="btn-primary">Create Your Account</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2025 EduMarketHub. All rights reserved.</p>
-        <nav class="footer-nav">
-          <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a>
-        </nav>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="assets/js/global.js"></script>
-    <script src="assets/js/home.js"></script>
   </body>
 </html>

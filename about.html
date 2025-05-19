@@ -3,36 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMarketHub - About</title>
+    <title>EduMArketHub</title>
 
-    <!-- Global & Page Styles -->
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/about.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/nav.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/about.css" />
   </head>
+
   <body>
-    <div class="about-wrapper">
-      <!-- Sidebar (reuse) -->
-      <aside class="sidebar">
-        <h2 class="logo">EduMarketHub</h2>
-        <nav>
-          <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="upload.html">Upload Content</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </nav>
-      </aside>
+    <!-- header -->
+    <header class="navbar">
+      <div class="logo">
+        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#" class="join-btn">Join Us</a>
+    </header>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <h1>About EduMarketHub</h1>
-
-        <!-- Introduction Section -->
-        <section class="intro">
-          <h2>Welcome to EduMarketHub</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <div class="container">
+          <h2>Welcome to <span class="highlight">EduMarketHub</span></h2>
           <p>
             EduMarketHub is an innovative platform designed to empower educators
             and learners worldwide. Our mission is to provide a marketplace
@@ -41,27 +46,29 @@
             learner searching for affordable, top-notch resources, EduMarketHub
             is here to make learning accessible for everyone.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- How it Works Section -->
-        <section class="how-it-works">
+      <!-- How It Works Section -->
+      <section class="how-it-works">
+        <div class="container">
           <h2>How It Works</h2>
-          <div class="steps">
-            <div class="step">
+          <div class="steps-grid">
+            <div class="step-card">
               <h3>Step 1: Sign Up</h3>
               <p>
                 Register on the platform for free and gain access to a world of
                 educational resources.
               </p>
             </div>
-            <div class="step">
+            <div class="step-card">
               <h3>Step 2: Upload Content</h3>
               <p>
                 Educators can upload courses, study notes, or any learning
                 materials to sell.
               </p>
             </div>
-            <div class="step">
+            <div class="step-card">
               <h3>Step 3: Browse and Buy</h3>
               <p>
                 Learners can browse through various courses, read reviews, and
@@ -69,19 +76,12 @@
               </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Team Section (Optional) -->
-        <section class="team">
-          <h2>Meet Our Team</h2>
-          <p>
-            We are a group of passionate educators, developers, and designers
-            working to change the future of online education.
-          </p>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact">
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <div class="container">
           <h2>Contact Us</h2>
           <p>
             If you have any questions, feel free to reach out to us at
@@ -89,11 +89,74 @@
               >support@edumarkethub.com</a
             >.
           </p>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+    </main>
 
-    <!-- JS -->
-    <script src="assets/js/global.js"></script>
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-container">
+          <!-- About Section -->
+          <div class="footer-column">
+            <h1 class="footer-logo">EduMarketHub</h1>
+            <p class="footer-desc">
+              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
+              at et diam est, tempor rebum ipsum sit ea tempor stet et
+              consetetur dolores.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-container">
+          <!-- Contact Info -->
+          <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            </p>
+            <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fa fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-column">
+            <h3>Our Courses</h3>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Apps Design</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-container bottom">
+          <p>&copy; EduMarketHub. All Rights Reserved.</p>
+          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

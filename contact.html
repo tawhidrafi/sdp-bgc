@@ -3,109 +3,146 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMarketHub - Contact</title>
+    <title>EduMArketHub</title>
 
-    <!-- Global & Page Styles -->
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/contact.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/nav.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/contact.css" />
   </head>
   <body>
-    <div class="contact-wrapper">
-      <!-- Sidebar (reuse) -->
-      <aside class="sidebar">
-        <h2 class="logo">EduMarketHub</h2>
-        <nav>
-          <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="upload.html">Upload Content</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </nav>
-      </aside>
+    <!-- header -->
+    <header class="navbar">
+      <div class="logo">
+        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#" class="join-btn">Join Us</a>
+    </header>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <h1>Contact Us</h1>
-
-        <!-- Contact Form Section -->
-        <section class="contact-form">
-          <h2>We'd love to hear from you!</h2>
-          <form id="contact-form" action="javascript:void(0);">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="Your Full Name"
-              />
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-box">
+            <div class="icon-box blue">
+              <i class="fa fa-map-marker-alt"></i>
             </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="Your Email Address"
-              />
+            <div>
+              <h4>Our Location</h4>
+              <p>123 Street, New York, USA</p>
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                placeholder="Subject of your message"
-              />
+          <div class="info-box">
+            <div class="icon-box gray"><i class="fa fa-phone-alt"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <p>+012 345 6789</p>
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                placeholder="Write your message"
-              ></textarea>
+          <div class="info-box">
+            <div class="icon-box yellow"><i class="fa fa-envelope"></i></div>
+            <div>
+              <h4>Email Us</h4>
+              <p>info@example.com</p>
             </div>
+          </div>
+        </div>
 
+        <div class="contact-form-container">
+          <h6 class="section-subtitle">Need Help?</h6>
+          <h1 class="section-title">Send Us A Message</h1>
+
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+            </div>
+            <input type="text" placeholder="Subject" required />
+            <textarea rows="5" placeholder="Message" required></textarea>
             <button type="submit">Send Message</button>
           </form>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <!-- Contact Information Section -->
-        <section class="contact-info">
-          <h2>Contact Information</h2>
-          <p>If you have any questions, feel free to reach out to us:</p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:support@edumarkethub.com"
-              >support@edumarkethub.com</a
-            >
-          </p>
-          <p><strong>Phone:</strong> +1 234 567 890</p>
-          <p><strong>Follow us on social media:</strong></p>
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
-          </ul>
-        </section>
-      </main>
-    </div>
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-container">
+          <!-- About Section -->
+          <div class="footer-column">
+            <h1 class="footer-logo">EduMarketHub</h1>
+            <p class="footer-desc">
+              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
+              at et diam est, tempor rebum ipsum sit ea tempor stet et
+              consetetur dolores.
+            </p>
+          </div>
+        </div>
 
-    <!-- JS -->
-    <script src="assets/js/global.js"></script>
-    <script src="assets/js/contact.js"></script>
+        <div class="footer-container">
+          <!-- Contact Info -->
+          <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            </p>
+            <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fa fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-column">
+            <h3>Our Courses</h3>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Apps Design</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-container bottom">
+          <p>&copy; EduMarketHub. All Rights Reserved.</p>
+          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

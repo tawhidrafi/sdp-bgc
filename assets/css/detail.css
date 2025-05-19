@@ -1,0 +1,100 @@
+/* Section Wrapper */
+.course-detail-section {
+  padding: 60px 20px;
+  background-color: #f0f0f0;
+}
+
+.course-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.course-detail-row {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+/* Left Column */
+.course-content {
+  flex: 2;
+}
+
+.course-header {
+  margin-bottom: 30px;
+}
+
+.course-subtitle {
+  text-transform: uppercase;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.course-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.course-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+
+.course-paragraph {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Right Column - Sidebar */
+.course-sidebar {
+  flex: 1;
+}
+
+.course-features {
+  background-color: #007bff;
+  padding: 25px;
+  border-radius: 6px;
+  color: white;
+}
+
+.features-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 0;
+  font-size: 1rem;
+}
+
+.course-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* Enroll Button */
+.enroll-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #007bff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.enroll-button:hover {
+  background-color: #e9ecef;
+}

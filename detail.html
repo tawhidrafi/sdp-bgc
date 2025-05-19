@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="./assets/css/global.css" />
     <link rel="stylesheet" href="./assets/css/nav.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
-    <link rel="stylesheet" href="./assets/css/courses.css" />
+    <link rel="stylesheet" href="./assets/css/detail.css" />
   </head>
-
   <body>
     <!-- header -->
     <header class="navbar">
@@ -24,7 +23,7 @@
         <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
       </div>
       <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="courses.html">Courses</a>
         <a href="contact.html">Contact</a>
@@ -32,85 +31,82 @@
       <a href="#" class="join-btn">Join Us</a>
     </header>
 
-    <!-- Courses Start -->
-    <section class="courses-section">
-      <div class="courses-container">
-        <div class="courses-header">
-          <h6 class="courses-subtitle">Our Courses</h6>
-          <h1 class="courses-title">Checkout New Releases Of Our Courses</h1>
-        </div>
+    <!-- Detail Start -->
+    <section class="course-detail-section">
+      <div class="course-detail-container">
+        <div class="course-detail-row">
+          <!-- Left Column: Course Content -->
+          <div class="course-content">
+            <div class="course-header">
+              <h6 class="course-subtitle">Course Detail</h6>
+              <h1 class="course-title">
+                Web design & development courses for beginners
+              </h1>
+            </div>
 
-        <div class="courses-grid">
-          <!-- Course Item -->
-          <div class="course-item">
-            <a href="detail.html">
-              <img
-                src="./assets/img/courses-1.jpg"
-                alt="Web Design"
-                class="course-image"
-              />
-              <div class="course-content">
-                <h5 class="course-title">
-                  Web Design & Development for Beginners
-                </h5>
-                <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
-                  <span class="course-rating">⭐ 4.5 (250)</span>
-                </div>
-              </div>
-            </a>
+            <img
+              src="./assets/img/courses-2.jpg"
+              alt="Course Header"
+              class="course-image"
+            />
+
+            <p class="course-paragraph">
+              Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam
+              dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam
+              diam amet diam et eos sadipscing labore...
+            </p>
+
+            <p class="course-paragraph">
+              Sadipscing labore amet rebum est et justo gubergren. Et eirmod
+              ipsum sit diam ut magna lorem...
+            </p>
           </div>
 
-          <!-- Course Item -->
-          <div class="course-item">
-            <a href="detail.html">
-              <img
-                src="./assets/img/courses-2.jpg"
-                alt="JavaScript"
-                class="course-image"
-              />
-              <div class="course-content">
-                <h5 class="course-title">JavaScript Essentials & Projects</h5>
-                <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
-                  <span class="course-rating">⭐ 4.5 (250)</span>
-                </div>
+          <!-- Right Column: Sidebar Features -->
+          <aside class="course-sidebar">
+            <div class="course-features">
+              <h3 class="features-title">Course Features</h3>
+
+              <div class="feature-item">
+                <span class="feature-label">Creator</span>
+                <span class="feature-value">John Doe</span>
               </div>
-            </a>
-          </div>
 
-          <!-- Course Item -->
-          <div class="course-item">
-            <a href="detail.html">
-              <img
-                src="./assets/img/courses-3.jpg"
-                alt="Python"
-                class="course-image"
-              />
-              <div class="course-content">
-                <h5 class="course-title">Python Programming for Beginners</h5>
-                <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
-                  <span class="course-rating">⭐ 4.5 (250)</span>
-                </div>
+              <div class="feature-item">
+                <span class="feature-label">Rating</span>
+                <span class="feature-value">4.5 <small>(250)</small></span>
               </div>
-            </a>
-          </div>
 
-          <!-- More course items... add more as needed -->
-        </div>
+              <div class="feature-item">
+                <span class="feature-label">Lectures</span>
+                <span class="feature-value">15</span>
+              </div>
 
-        <div class="courses-pagination">
-          <a href="#" class="pagination-link disabled">«</a>
-          <a href="#" class="pagination-link active">1</a>
-          <a href="#" class="pagination-link">2</a>
-          <a href="#" class="pagination-link">3</a>
-          <a href="#" class="pagination-link">»</a>
+              <div class="feature-item">
+                <span class="feature-label">Duration</span>
+                <span class="feature-value">10.00 Hrs</span>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-label">Skill Level</span>
+                <span class="feature-value">All Level</span>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-label">Language</span>
+                <span class="feature-value">English</span>
+              </div>
+
+              <div class="course-price">Course Price: $199</div>
+
+              <a href="#" class="enroll-button">Enroll Now</a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- Courses End -->
+    <!-- Detail End -->
 
     <!-- footer -->
     <footer class="site-footer">
