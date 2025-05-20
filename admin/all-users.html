@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduMarketHub - Admin</title>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/users.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- Primary Navbar (User) -->
+      <div class="navbar user-navbar container">
+        <div class="navbar-left logo">
+          <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
+        </div>
+        <nav class="navbar-right nav-links">
+          <a href="./../index.html">Home</a>
+          <a href="./../about.html">About</a>
+          <a href="./../courses.html">Courses</a>
+          <a href="./../contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Admin Navbar -->
+      <div class="navbar admin-navbar container">
+        <div class="navbar-left logo admin-welcome">
+          <h1>Welcome, Admin</h1>
+        </div>
+        <nav class="navbar-center nav-links">
+          <a href="index.html">Admin Dashboard</a>
+          <a href="all-courses.html">All Courses</a>
+          <a href="all-users.html">All Users</a>
+          <a href="payments.html">Payments</a>
+        </nav>
+        <div class="navbar-right">
+          <a href="#" class="join-btn logout-btn">Log Out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+      <section class="admin-users-section">
+        <h2 class="section-title">All Registered Users</h2>
+
+        <div class="table-wrapper">
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Registered</th>
+                <th>Enrolled</th>
+                <th>Uploaded</th>
+                <th>Paid ($)</th>
+                <th>Earned ($)</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jane Doe</td>
+                <td>jane@example.com</td>
+                <td>2025-04-10</td>
+                <td>3</td>
+                <td>1</td>
+                <td>120</td>
+                <td>45</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>John Smith</td>
+                <td>john@example.com</td>
+                <td>2025-03-22</td>
+                <td>5</td>
+                <td>2</td>
+                <td>250</td>
+                <td>110</td>
+                <td><span class="status inactive">Inactive</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Alice Green</td>
+                <td>alice@example.com</td>
+                <td>2025-02-28</td>
+                <td>2</td>
+                <td>1</td>
+                <td>80</td>
+                <td>35</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Mike Lee</td>
+                <td>mike@example.com</td>
+                <td>2025-05-01</td>
+                <td>4</td>
+                <td>3</td>
+                <td>190</td>
+                <td>90</td>
+                <td><span class="status inactive">Inactive</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Emily White</td>
+                <td>emily@example.com</td>
+                <td>2025-04-18</td>
+                <td>6</td>
+                <td>0</td>
+                <td>300</td>
+                <td>0</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>David Brown</td>
+                <td>david@example.com</td>
+                <td>2025-01-15</td>
+                <td>1</td>
+                <td>2</td>
+                <td>40</td>
+                <td>60</td>
+                <td><span class="status inactive">Inactive</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Linda Ray</td>
+                <td>linda@example.com</td>
+                <td>2025-03-11</td>
+                <td>2</td>
+                <td>2</td>
+                <td>150</td>
+                <td>100</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Robert Clark</td>
+                <td>robert@example.com</td>
+                <td>2025-02-01</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>20</td>
+                <td><span class="status inactive">Inactive</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Susan Moore</td>
+                <td>susan@example.com</td>
+                <td>2025-04-05</td>
+                <td>3</td>
+                <td>0</td>
+                <td>130</td>
+                <td>0</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Daniel Kim</td>
+                <td>daniel@example.com</td>
+                <td>2025-03-29</td>
+                <td>5</td>
+                <td>3</td>
+                <td>210</td>
+                <td>140</td>
+                <td><span class="status active">Active</span></td>
+                <td class="action-buttons">
+                  <button class="btn activate">Activate</button>
+                  <button class="btn hold">Hold</button>
+                  <button class="btn deactivate">Deactivate</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-container container">
+          <div class="footer-column">
+            <h1 class="footer-logo">EduMarketHub</h1>
+            <p class="footer-desc">
+              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
+              at et diam est, tempor rebum ipsum sit ea tempor stet et
+              consetetur dolores.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            </p>
+            <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fa fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Our Courses</h3>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Apps Design</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-container container">
+          <p>&copy; EduMarketHub. All Rights Reserved.</p>
+          <p>Designed by <a href="#">Team @ 5th Semester</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

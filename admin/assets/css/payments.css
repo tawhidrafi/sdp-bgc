@@ -1,0 +1,75 @@
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+.payment-table th,
+.payment-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.payment-table thead {
+  background-color: #f5f5f5;
+}
+
+/* Payment status styles */
+.status.paid {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.failed {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Action Buttons */
+.btn.approve {
+  background-color: #28a745;
+  color: white;
+  font-size: 0.85em;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.reject {
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.85em;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.approve:hover {
+  background-color: #218838;
+}
+
+.btn.reject:hover {
+  background-color: #c82333;
+}

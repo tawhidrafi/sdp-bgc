@@ -1,0 +1,95 @@
+/* === Users Table Section === */
+.admin-users-section {
+  padding: 25px 0;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+/* Table Styling */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.user-table thead {
+  background-color: #007bff;
+  color: white;
+  text-align: left;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Status Labels */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 5px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s;
+}
+
+.btn.activate {
+  background-color: #28a745;
+}
+
+.btn.hold {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn.deactivate {
+  background-color: #dc3545;
+}
+.btn:hover {
+  opacity: 0.9;
+}

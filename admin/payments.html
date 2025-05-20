@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduMarketHub - Admin</title>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/payments.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- Primary Navbar (User) -->
+      <div class="navbar user-navbar container">
+        <div class="navbar-left logo">
+          <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
+        </div>
+        <nav class="navbar-right nav-links">
+          <a href="./../index.html">Home</a>
+          <a href="./../about.html">About</a>
+          <a href="./../courses.html">Courses</a>
+          <a href="./../contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Admin Navbar -->
+      <div class="navbar admin-navbar container">
+        <div class="navbar-left logo admin-welcome">
+          <h1>Welcome, Admin</h1>
+        </div>
+        <nav class="navbar-center nav-links">
+          <a href="index.html">Admin Dashboard</a>
+          <a href="all-courses.html">All Courses</a>
+          <a href="all-users.html">All Users</a>
+          <a href="payments.html">Payments</a>
+        </nav>
+        <div class="navbar-right">
+          <a href="#" class="join-btn logout-btn">Log Out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+      <section class="admin-payments-section">
+        <h2 class="section-title">All Payments</h2>
+
+        <div class="table-wrapper">
+          <table class="payment-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Course</th>
+                <th>Creator</th>
+                <th>User</th>
+                <th>User ID</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#P001</td>
+                <td>2025-05-01</td>
+                <td>Intro to HTML</td>
+                <td>Jane Doe</td>
+                <td>Michael Scott</td>
+                <td>#U101</td>
+                <td>PayPal</td>
+                <td><span class="status paid">Paid</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P002</td>
+                <td>2025-05-02</td>
+                <td>Python for All</td>
+                <td>John Smith</td>
+                <td>Pam Beesly</td>
+                <td>#U102</td>
+                <td>Stripe</td>
+                <td><span class="status pending">Pending</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P003</td>
+                <td>2025-05-02</td>
+                <td>Figma Notes</td>
+                <td>Alice Green</td>
+                <td>Jim Halpert</td>
+                <td>#U103</td>
+                <td>Card</td>
+                <td><span class="status paid">Paid</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P004</td>
+                <td>2025-05-03</td>
+                <td>SEO Guide</td>
+                <td>Emily White</td>
+                <td>Dwight Schrute</td>
+                <td>#U104</td>
+                <td>Bank Transfer</td>
+                <td><span class="status failed">Failed</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P005</td>
+                <td>2025-05-03</td>
+                <td>React Snippets</td>
+                <td>Mike Lee</td>
+                <td>Angela Martin</td>
+                <td>#U105</td>
+                <td>PayPal</td>
+                <td><span class="status paid">Paid</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P006</td>
+                <td>2025-05-04</td>
+                <td>Design Tips</td>
+                <td>David Brown</td>
+                <td>Kevin Malone</td>
+                <td>#U106</td>
+                <td>UPI</td>
+                <td><span class="status pending">Pending</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P007</td>
+                <td>2025-05-05</td>
+                <td>Vue Crash Course</td>
+                <td>Susan Moore</td>
+                <td>Oscar Martinez</td>
+                <td>#U107</td>
+                <td>Stripe</td>
+                <td><span class="status paid">Paid</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P008</td>
+                <td>2025-05-05</td>
+                <td>Marketing Notes</td>
+                <td>Robert Clark</td>
+                <td>Stanley Hudson</td>
+                <td>#U108</td>
+                <td>Card</td>
+                <td><span class="status failed">Failed</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P009</td>
+                <td>2025-05-06</td>
+                <td>Java Essentials</td>
+                <td>Daniel Kim</td>
+                <td>Phyllis Vance</td>
+                <td>#U109</td>
+                <td>UPI</td>
+                <td><span class="status paid">Paid</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#P010</td>
+                <td>2025-05-06</td>
+                <td>ML Basics</td>
+                <td>Linda Ray</td>
+                <td>Creed Bratton</td>
+                <td>#U110</td>
+                <td>Bank Transfer</td>
+                <td><span class="status pending">Pending</span></td>
+                <td class="action-buttons">
+                  <button class="btn approve">Approve</button>
+                  <button class="btn reject">Not Found</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-container container">
+          <div class="footer-column">
+            <h1 class="footer-logo">EduMarketHub</h1>
+            <p class="footer-desc">
+              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
+              at et diam est, tempor rebum ipsum sit ea tempor stet et
+              consetetur dolores.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            </p>
+            <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fa fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Our Courses</h3>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Apps Design</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-container container">
+          <p>&copy; EduMarketHub. All Rights Reserved.</p>
+          <p>Designed by <a href="#">Team @ 5th Semester</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
