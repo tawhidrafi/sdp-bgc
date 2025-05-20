@@ -1,0 +1,152 @@
+/* General link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Section container */
+.courses-section {
+  padding: 60px 20px;
+  background-color: #f0f0f0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.courses-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styles */
+.courses-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.courses-subtitle {
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.courses-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+  color: #222;
+}
+
+/* Courses grid layout */
+.courses-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual course card */
+.course-item {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.course-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Course image */
+.course-image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Course content */
+.course-content {
+  padding: 18px 20px;
+  background-color: #222;
+  color: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Course title */
+.course-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Footer info container */
+.course-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  color: #ccc;
+}
+
+/* Specific spans for different info */
+.course-author,
+.course-progress,
+.course-sales,
+.course-rating {
+  font-weight: 500;
+}
+
+/* Distinct colors for my-courses page */
+.courses-section.my-courses {
+  background-color: #f9f9ff;
+}
+
+.courses-section.my-courses .course-content {
+  background-color: #2a2a72;
+}
+
+.courses-section.my-courses .course-footer {
+  border-top-color: #444f9c;
+  color: #d1d4ff;
+}
+
+/* Distinct colors for uploaded-courses page */
+.courses-section.uploaded-courses {
+  background-color: #eef9f2;
+}
+
+.courses-section.uploaded-courses .course-content {
+  background-color: #1b4720;
+}
+
+.courses-section.uploaded-courses .course-footer {
+  border-top-color: #3b8e44;
+  color: #c7e5c6;
+}
+
+/* Responsive: Two columns on tablets */
+@media (min-width: 768px) {
+  .course-item {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Responsive: Three columns on desktops */
+@media (min-width: 992px) {
+  .course-item {
+    width: calc(33.333% - 20px);
+  }
+}
