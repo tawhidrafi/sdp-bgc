@@ -1,17 +1,6 @@
-/* General Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+a {
+  text-decoration: none;
 }
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #222;
-}
-
-/* Section Styles */
 .courses-section {
   padding: 60px 20px;
   background-color: #f0f0f0;
@@ -22,7 +11,6 @@ body {
   margin: 0 auto;
 }
 
-/* Header */
 .courses-header {
   text-align: center;
   margin-bottom: 50px;
@@ -40,7 +28,6 @@ body {
   margin-top: 10px;
 }
 
-/* Course Grid */
 .courses-grid {
   display: flex;
   flex-wrap: wrap;
@@ -54,13 +41,14 @@ body {
   width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-item:hover {
   transform: translateY(-5px);
 }
 
-/* Responsive 3-per-row */
 @media (min-width: 768px) {
   .course-item {
     width: calc(50% - 10px);
@@ -73,18 +61,20 @@ body {
   }
 }
 
-/* Course Image */
 .course-image {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
 
-/* Course Content */
 .course-content {
   padding: 20px;
   background-color: #222;
   color: #fff;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .course-title {
@@ -101,7 +91,6 @@ body {
   padding-top: 12px;
 }
 
-/* Pagination */
 .courses-pagination {
   display: flex;
   justify-content: center;

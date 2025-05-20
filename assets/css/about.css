@@ -1,13 +1,3 @@
-/* Utility Styles */
-main {
-  background-color: #fdfdfd;
-}
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
 /* Section Base Style */
 section {
   margin-bottom: 60px;
@@ -49,10 +39,15 @@ section h2 {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  outline: none;
 }
 .step-card h3 {
   margin-bottom: 10px;
   color: #007bff;
+}
+.step-card:focus {
+  outline: 3px solid #007bff;
+  outline-offset: 3px;
 }
 
 /* Contact Section */
@@ -66,6 +61,15 @@ section h2 {
   text-decoration: none;
   font-weight: bold;
 }
-.contact-section a:hover {
+.contact-section a:hover,
+.contact-section a:focus {
   text-decoration: underline;
+  outline: none;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px dashed #007bff;
+  outline-offset: 2px;
 }

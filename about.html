@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMArketHub</title>
+    <title>EduMarketHub - About</title>
+    <meta
+      name="description"
+      content="Learn about EduMarketHub, an innovative platform empowering educators and learners worldwide by providing a marketplace for educational materials."
+    />
 
     <!-- Font Awesome -->
     <link
@@ -12,19 +16,17 @@
     />
 
     <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="./assets/css/nav.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/about.css" />
   </head>
 
   <body>
-    <!-- header -->
+    <!-- Navigation -->
     <header class="navbar">
       <div class="logo">
-        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+        <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
       </div>
       <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="courses.html">Courses</a>
         <a href="contact.html">Contact</a>
@@ -33,7 +35,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main id="main-content" class="main-content">
       <!-- Introduction Section -->
       <section class="intro-section">
         <div class="container">
@@ -54,27 +56,27 @@
         <div class="container">
           <h2>How It Works</h2>
           <div class="steps-grid">
-            <div class="step-card">
+            <article class="step-card" tabindex="0">
               <h3>Step 1: Sign Up</h3>
               <p>
                 Register on the platform for free and gain access to a world of
                 educational resources.
               </p>
-            </div>
-            <div class="step-card">
+            </article>
+            <article class="step-card" tabindex="0">
               <h3>Step 2: Upload Content</h3>
               <p>
                 Educators can upload courses, study notes, or any learning
                 materials to sell.
               </p>
-            </div>
-            <div class="step-card">
+            </article>
+            <article class="step-card" tabindex="0">
               <h3>Step 3: Browse and Buy</h3>
               <p>
                 Learners can browse through various courses, read reviews, and
                 buy materials to enhance their knowledge.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -93,11 +95,10 @@
       </section>
     </main>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-top">
-        <div class="footer-container">
-          <!-- About Section -->
+        <div class="footer-container container">
           <div class="footer-column">
             <h1 class="footer-logo">EduMarketHub</h1>
             <p class="footer-desc">
@@ -106,10 +107,7 @@
               consetetur dolores.
             </p>
           </div>
-        </div>
 
-        <div class="footer-container">
-          <!-- Contact Info -->
           <div class="footer-column">
             <h3>Get In Touch</h3>
             <p>
@@ -125,7 +123,6 @@
             </div>
           </div>
 
-          <!-- Courses -->
           <div class="footer-column">
             <h3>Our Courses</h3>
             <ul>
@@ -137,7 +134,6 @@
             </ul>
           </div>
 
-          <!-- Quick Links -->
           <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
@@ -152,9 +148,9 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-container bottom">
+        <div class="footer-bottom-container container">
           <p>&copy; EduMarketHub. All Rights Reserved.</p>
-          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
+          <p>Designed by <a href="#">Team @ 5th Semester</a></p>
         </div>
       </div>
     </footer>

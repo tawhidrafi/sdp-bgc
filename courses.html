@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMArketHub</title>
+    <title>EduMarketHub - All Courses</title>
 
     <!-- Font Awesome -->
     <link
@@ -12,8 +12,6 @@
     />
 
     <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="./assets/css/nav.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/courses.css" />
   </head>
 
@@ -21,15 +19,15 @@
     <!-- header -->
     <header class="navbar">
       <div class="logo">
-        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+        <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
       </div>
       <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="courses.html">Courses</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a href="#" class="join-btn">Join Us</a>
+      <a href="#" class="join-btn" role="button">Join Us</a>
     </header>
 
     <!-- Courses Start -->
@@ -41,12 +39,12 @@
         </div>
 
         <div class="courses-grid">
-          <!-- Course Item -->
+          <!-- Course Items -->
           <div class="course-item">
             <a href="detail.html">
               <img
                 src="./assets/img/courses-1.jpg"
-                alt="Web Design"
+                alt="Web Design & Development course"
                 class="course-image"
               />
               <div class="course-content">
@@ -54,50 +52,99 @@
                   Web Design & Development for Beginners
                 </h5>
                 <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
+                  <span class="course-author">John Doe</span>
                   <span class="course-rating">⭐ 4.5 (250)</span>
                 </div>
               </div>
             </a>
           </div>
 
-          <!-- Course Item -->
           <div class="course-item">
             <a href="detail.html">
               <img
                 src="./assets/img/courses-2.jpg"
-                alt="JavaScript"
+                alt="JavaScript Essentials course"
                 class="course-image"
               />
               <div class="course-content">
                 <h5 class="course-title">JavaScript Essentials & Projects</h5>
                 <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
+                  <span class="course-author">John Doe</span>
                   <span class="course-rating">⭐ 4.5 (250)</span>
                 </div>
               </div>
             </a>
           </div>
 
-          <!-- Course Item -->
           <div class="course-item">
             <a href="detail.html">
               <img
                 src="./assets/img/courses-3.jpg"
-                alt="Python"
+                alt="Python Programming course"
                 class="course-image"
               />
               <div class="course-content">
                 <h5 class="course-title">Python Programming for Beginners</h5>
                 <div class="course-footer">
-                  <span class="course-author">Jhon Doe</span>
+                  <span class="course-author">John Doe</span>
                   <span class="course-rating">⭐ 4.5 (250)</span>
                 </div>
               </div>
             </a>
           </div>
 
-          <!-- More course items... add more as needed -->
+          <div class="course-item">
+            <a href="detail.html">
+              <img
+                src="./assets/img/courses-4.jpg"
+                alt="Data Science Bootcamp"
+                class="course-image"
+              />
+              <div class="course-content">
+                <h5 class="course-title">
+                  Data Science Bootcamp with Real Projects
+                </h5>
+                <div class="course-footer">
+                  <span class="course-author">Jane Smith</span>
+                  <span class="course-rating">⭐ 4.7 (310)</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="course-item">
+            <a href="detail.html">
+              <img
+                src="./assets/img/courses-5.jpg"
+                alt="Digital Marketing Mastery"
+                class="course-image"
+              />
+              <div class="course-content">
+                <h5 class="course-title">Digital Marketing Mastery 2025</h5>
+                <div class="course-footer">
+                  <span class="course-author">Sarah Lee</span>
+                  <span class="course-rating">⭐ 4.6 (190)</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="course-item">
+            <a href="detail.html">
+              <img
+                src="./assets/img/courses-6.jpg"
+                alt="Full Stack Development"
+                class="course-image"
+              />
+              <div class="course-content">
+                <h5 class="course-title">Full Stack Web Development (MERN)</h5>
+                <div class="course-footer">
+                  <span class="course-author">Alex Johnson</span>
+                  <span class="course-rating">⭐ 4.8 (420)</span>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
 
         <div class="courses-pagination">
@@ -110,25 +157,18 @@
       </div>
     </section>
 
-    <!-- Courses End -->
-
     <!-- footer -->
     <footer class="site-footer">
       <div class="footer-top">
-        <div class="footer-container">
-          <!-- About Section -->
+        <div class="footer-container container">
           <div class="footer-column">
             <h1 class="footer-logo">EduMarketHub</h1>
             <p class="footer-desc">
-              Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem
-              at et diam est, tempor rebum ipsum sit ea tempor stet et
-              consetetur dolores.
+              Learn from industry professionals. Find top courses in tech,
+              design, and marketing to upgrade your skills and career.
             </p>
           </div>
-        </div>
 
-        <div class="footer-container">
-          <!-- Contact Info -->
           <div class="footer-column">
             <h3>Get In Touch</h3>
             <p>
@@ -137,14 +177,21 @@
             <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
             <p><i class="fa fa-envelope"></i> info@example.com</p>
             <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
             </div>
           </div>
 
-          <!-- Courses -->
           <div class="footer-column">
             <h3>Our Courses</h3>
             <ul>
@@ -156,13 +203,12 @@
             </ul>
           </div>
 
-          <!-- Quick Links -->
           <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Terms & Condition</a></li>
-              <li><a href="#">Regular FAQs</a></li>
+              <li><a href="#">FAQs</a></li>
               <li><a href="#">Help & Support</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
@@ -171,9 +217,9 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-container bottom">
+        <div class="footer-bottom-container container">
           <p>&copy; EduMarketHub. All Rights Reserved.</p>
-          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
+          <p>Designed by <a href="#">Team @ 5th Semester</a></p>
         </div>
       </div>
     </footer>

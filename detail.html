@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduMArketHub</title>
+    <title>EduMArketHub - Course Details</title>
 
     <!-- Font Awesome -->
     <link
@@ -12,15 +12,13 @@
     />
 
     <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="./assets/css/nav.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/detail.css" />
   </head>
   <body>
     <!-- header -->
     <header class="navbar">
       <div class="logo">
-        <h1><i class="fa fa-book-reader"></i> EduMArketHub</h1>
+        <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
       </div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
@@ -32,87 +30,92 @@
     </header>
 
     <!-- Detail Start -->
-    <section class="course-detail-section">
-      <div class="course-detail-container">
-        <div class="course-detail-row">
-          <!-- Left Column: Course Content -->
-          <div class="course-content">
-            <div class="course-header">
-              <h6 class="course-subtitle">Course Detail</h6>
-              <h1 class="course-title">
-                Web design & development courses for beginners
-              </h1>
-            </div>
+    <main>
+      <section class="course-detail-section">
+        <div class="course-detail-container">
+          <div class="course-detail-row">
+            <!-- Left Column: Course Content -->
+            <article class="course-content">
+              <header class="course-header">
+                <h6 class="course-subtitle">Course Detail</h6>
+                <h1 class="course-title">
+                  Web Design & Development Courses for Beginners
+                </h1>
+              </header>
 
-            <img
-              src="./assets/img/courses-2.jpg"
-              alt="Course Header"
-              class="course-image"
-            />
+              <figure class="course-image-wrapper">
+                <img
+                  src="./assets/img/courses-2.jpg"
+                  alt="Course Header"
+                  class="course-image"
+                />
+              </figure>
 
-            <p class="course-paragraph">
-              Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam
-              dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam
-              diam amet diam et eos sadipscing labore...
-            </p>
+              <p class="course-description">
+                Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam
+                dolor diam ipsum et, tempor voluptua sit consetetur sit.
+                Aliquyam diam amet diam et eos sadipscing labore...
+              </p>
 
-            <p class="course-paragraph">
-              Sadipscing labore amet rebum est et justo gubergren. Et eirmod
-              ipsum sit diam ut magna lorem...
-            </p>
+              <p class="course-description">
+                Sadipscing labore amet rebum est et justo gubergren. Et eirmod
+                ipsum sit diam ut magna lorem...
+              </p>
+            </article>
+
+            <!-- Right Column: Sidebar Features -->
+            <aside class="course-sidebar">
+              <section class="course-features">
+                <h3 class="features-title">Course Features</h3>
+
+                <dl class="feature-list">
+                  <div class="feature-item">
+                    <dt class="feature-label">Creator</dt>
+                    <dd class="feature-value">John Doe</dd>
+                  </div>
+
+                  <div class="feature-item">
+                    <dt class="feature-label">Rating</dt>
+                    <dd class="feature-value">4.5</dd>
+                  </div>
+
+                  <div class="feature-item">
+                    <dt class="feature-label">Lectures</dt>
+                    <dd class="feature-value">15</dd>
+                  </div>
+
+                  <div class="feature-item">
+                    <dt class="feature-label">Duration</dt>
+                    <dd class="feature-value">10.00 Hrs</dd>
+                  </div>
+
+                  <div class="feature-item">
+                    <dt class="feature-label">Skill Level</dt>
+                    <dd class="feature-value">All Level</dd>
+                  </div>
+
+                  <div class="feature-item">
+                    <dt class="feature-label">Language</dt>
+                    <dd class="feature-value">English</dd>
+                  </div>
+                </dl>
+
+                <div class="course-price">Course Price: $199</div>
+
+                <a href="#" class="enroll-button">Enroll Now</a>
+              </section>
+            </aside>
           </div>
-
-          <!-- Right Column: Sidebar Features -->
-          <aside class="course-sidebar">
-            <div class="course-features">
-              <h3 class="features-title">Course Features</h3>
-
-              <div class="feature-item">
-                <span class="feature-label">Creator</span>
-                <span class="feature-value">John Doe</span>
-              </div>
-
-              <div class="feature-item">
-                <span class="feature-label">Rating</span>
-                <span class="feature-value">4.5 <small>(250)</small></span>
-              </div>
-
-              <div class="feature-item">
-                <span class="feature-label">Lectures</span>
-                <span class="feature-value">15</span>
-              </div>
-
-              <div class="feature-item">
-                <span class="feature-label">Duration</span>
-                <span class="feature-value">10.00 Hrs</span>
-              </div>
-
-              <div class="feature-item">
-                <span class="feature-label">Skill Level</span>
-                <span class="feature-value">All Level</span>
-              </div>
-
-              <div class="feature-item">
-                <span class="feature-label">Language</span>
-                <span class="feature-value">English</span>
-              </div>
-
-              <div class="course-price">Course Price: $199</div>
-
-              <a href="#" class="enroll-button">Enroll Now</a>
-            </div>
-          </aside>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Detail End -->
 
     <!-- footer -->
     <footer class="site-footer">
       <div class="footer-top">
-        <div class="footer-container">
-          <!-- About Section -->
+        <div class="footer-container container">
           <div class="footer-column">
             <h1 class="footer-logo">EduMarketHub</h1>
             <p class="footer-desc">
@@ -121,10 +124,7 @@
               consetetur dolores.
             </p>
           </div>
-        </div>
 
-        <div class="footer-container">
-          <!-- Contact Info -->
           <div class="footer-column">
             <h3>Get In Touch</h3>
             <p>
@@ -140,7 +140,6 @@
             </div>
           </div>
 
-          <!-- Courses -->
           <div class="footer-column">
             <h3>Our Courses</h3>
             <ul>
@@ -152,7 +151,6 @@
             </ul>
           </div>
 
-          <!-- Quick Links -->
           <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
@@ -167,9 +165,9 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-container bottom">
+        <div class="footer-bottom-container container">
           <p>&copy; EduMarketHub. All Rights Reserved.</p>
-          <p>Designed by <a href="#"> Team @ 5th Semester</a></p>
+          <p>Designed by <a href="#">Team @ 5th Semester</a></p>
         </div>
       </div>
     </footer>
