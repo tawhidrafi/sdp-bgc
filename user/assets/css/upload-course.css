@@ -64,3 +64,27 @@
 .btn.submit-btn:hover {
   background-color: #0056b3;
 }
+
+.alert {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert.error ul {
+  margin: 0;
+  padding-left: 20px;
+}

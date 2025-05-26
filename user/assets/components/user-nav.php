@@ -1,14 +1,5 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-  // Redirect to login page if not logged in
-  header("Location: http://localhost/edu/login.php");
-  exit;
-}
-
 // Accessing session variables
-$userId = $_SESSION['user_id'];
 $userName =  $_SESSION['user_name'] ?? 'User';
 
 echo '

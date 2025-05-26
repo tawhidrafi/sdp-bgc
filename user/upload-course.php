@@ -1,3 +1,82 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+  // Redirect to login page if not logged in
+  header("Location: http://localhost/edu/login.php");
+  exit;
+}
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // DB connection
+  $conn = new mysqli("localhost", "root", "", "edumarkethub");
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Get form fields
+  $name = trim($_POST['name']);
+  $category = trim($_POST['category']);
+  $type = $_POST['type'];
+  $duration = trim($_POST['duration']);
+  $level = trim($_POST['level']);
+  $lectures = intval($_POST['lectures']);
+  $language = trim($_POST['language']);
+  $price = floatval($_POST['price']);
+  $details = trim($_POST['details']);
+  $user_id = $_SESSION['user_id'];
+
+  // File handling
+  $image = $_FILES['image'];
+  $courseFile = $_FILES['file'];
+
+  $uploadDirImg = '../courses/assets/img/';
+  $uploadDirFile = '../courses/assets/file/';
+
+  $imageName = time() . '_' . basename($image['name']);
+  $courseFileName = time() . '_' . basename($courseFile['name']);
+
+  $imagePath = $uploadDirImg . $imageName;
+  $coursePath = $uploadDirFile . $courseFileName;
+
+  $errors = [];
+
+  // Validate ZIP file
+  $ext = pathinfo($courseFileName, PATHINFO_EXTENSION);
+  if (strtolower($ext) !== 'zip') {
+    $errors[] = "Course file must be a .zip archive.";
+  }
+
+  // Move files
+  if (empty($errors)) {
+    if (
+      move_uploaded_file($image['tmp_name'], $imagePath) &&
+      move_uploaded_file($courseFile['tmp_name'], $coursePath)
+    ) {
+      // Insert into DB
+      $stmt = $conn->prepare("INSERT INTO courses (user_id, name, category, cover_image, type, duration, level, lectures, language, price, details, course_file)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->bind_param("issssssissss", $user_id, $name, $category, $imageName, $type, $duration, $level, $lectures, $language, $price, $details, $courseFileName);
+
+
+      if ($stmt->execute()) {
+        $success = "Course uploaded successfully!";
+        header("Refresh: 2; URL = index.php"); // Redirect after 2 seconds
+
+      } else {
+        $errors[] = "Database error: " . $stmt->error;
+      }
+
+      $stmt->close();
+    } else {
+      $errors[] = "Failed to upload files.";
+    }
+  }
+
+  $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +104,22 @@
     <section class="upload-course-section">
       <h2 class="section-title">Upload New Course / Note</h2>
 
-      <form class="upload-form" enctype="multipart/form-data">
+      <form class="upload-form" enctype="multipart/form-data" action="" method="post">
+
+        <?php if (!empty($success)): ?>
+          <div class="alert success"><?php echo $success; ?></div>
+        <?php endif; ?>
+
+        <?php if (!empty($errors)): ?>
+          <div class="alert error">
+            <ul>
+              <?php foreach ($errors as $error): ?>
+                <li><?php echo htmlspecialchars($error); ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endif; ?>
+
         <div class="form-grid">
           <!-- Left Column -->
           <div class="form-group">
