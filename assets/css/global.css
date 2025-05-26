@@ -43,6 +43,10 @@ footer {
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -210,4 +214,10 @@ footer {
 
 .footer-bottom-container a:hover {
   color: #fff;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
 }
