@@ -13,7 +13,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/upload-course.css" />
   </head>
   <body>
     <!-- HEADER -->
@@ -50,67 +50,126 @@
     </header>
 
     <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT -->
     <main class="container">
-      <section class="dashboard-overview">
-        <!-- STAT CARDS -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>Member Since</h3>
-            <p><strong>15 Mar 2023</strong></p>
-          </div>
-          <div class="stat-card">
-            <h3>Courses Bought</h3>
-            <p><strong>8</strong></p>
-          </div>
-          <div class="stat-card">
-            <h3>Courses Sold</h3>
-            <p><strong>5</strong></p>
-          </div>
-          <div class="stat-card">
-            <h3>Total Earnings</h3>
-            <p><strong>$450</strong></p>
-          </div>
-          <div class="stat-card">
-            <h3>Total Expenses</h3>
-            <p><strong>$320</strong></p>
-          </div>
-        </div>
+      <section class="upload-course-section">
+        <h2 class="section-title">Edit Course / Note</h2>
 
-        <!-- PENDING PAYMENTS -->
-        <section class="dashboard-section pending-payments">
-          <h2>Pending Payments / Approvals</h2>
-          <ul class="pending-list">
-            <li>
-              <strong>Purchase:</strong> "Advanced SQL Note" — Waiting for
-              Approval
-            </li>
-            <li>
-              <strong>Upload:</strong> "Data Structures in Go" — Under Review
-            </li>
-          </ul>
-        </section>
+        <form class="upload-form" enctype="multipart/form-data">
+          <div class="form-grid">
+            <!-- Left Column -->
+            <div class="form-group">
+              <label for="name">Course Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value="Introduction to Python"
+                required
+              />
+            </div>
 
-        <!-- QUICK SHORTCUTS -->
-        <section class="dashboard-section dashboard-shortcuts">
-          <h2>Quick Shortcuts</h2>
-          <div class="shortcut-grid">
-            <a href="./upload-course.html" class="shortcut-btn">
-              <i class="fas fa-upload"></i> Upload Course
-            </a>
-            <a href="./enrolled.html" class="shortcut-btn">
-              <i class="fas fa-book"></i> My Courses
-            </a>
-            <a href="./earnings.html" class="shortcut-btn">
-              <i class="fas fa-dollar-sign"></i> Check Earnings
-            </a>
-            <a href="./profile.html" class="shortcut-btn">
-              <i class="fas fa-user"></i> Edit Profile
-            </a>
-            <a href="./../contact.html" class="shortcut-btn">
-              <i class="fas fa-headset"></i> Contact Admin
-            </a>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value="Programming"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="image">Cover Image</label>
+              <input type="file" id="image" name="image" accept="image/*" />
+              <small>Leave blank to keep current image</small>
+            </div>
+
+            <div class="form-group">
+              <label for="type">Type</label>
+              <select id="type" name="type" required>
+                <option value="">Select Type</option>
+                <option value="course" selected>Course</option>
+                <option value="note">Note</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="duration">Duration (e.g. 2h 30m)</label>
+              <input
+                type="text"
+                id="duration"
+                name="duration"
+                value="3h 15m"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="level">Skill Level</label>
+              <input
+                type="text"
+                id="level"
+                name="level"
+                value="Beginner"
+                required
+              />
+            </div>
+
+            <!-- Right Column -->
+            <div class="form-group">
+              <label for="lectures">No. of Lectures</label>
+              <input
+                type="number"
+                id="lectures"
+                name="lectures"
+                value="10"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="language">Language</label>
+              <input
+                type="text"
+                id="language"
+                name="language"
+                value="English"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price (in $)</label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                value="25"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="file">Replace Course File (.zip)</label>
+              <input type="file" id="file" name="file" accept=".zip" />
+              <small>Leave blank to keep existing file</small>
+            </div>
+
+            <!-- Full-width Details Field -->
+            <div class="form-group full-width">
+              <label for="details">Details</label>
+              <textarea id="details" name="details" rows="4" required>
+This course teaches you Python from scratch, ideal for beginners with no programming experience.
+          </textarea
+              >
+            </div>
           </div>
-        </section>
+
+          <button type="submit" class="btn submit-btn">Update Course</button>
+        </form>
       </section>
     </main>
 

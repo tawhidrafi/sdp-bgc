@@ -1,0 +1,101 @@
+/* === Profile Section === */
+.profile-section,
+.edit-profile-section {
+  margin-top: 40px;
+}
+
+.profile-card {
+  display: flex;
+  gap: 30px;
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-info p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.edit-profile-btn {
+  margin-top: 20px;
+}
+
+.edit-profile-btn .btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.edit-profile-btn .btn-primary:hover {
+  background: #0b5ed7;
+}
+
+/* === Edit Profile Form === */
+.edit-profile-form {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+}
+
+.edit-profile-form .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-profile-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.edit-profile-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.edit-profile-form .btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-profile-form .btn-primary:hover {
+  background: #0b5ed7;
+}
+.view-mode,
+.edit-mode {
+  flex: 1;
+}
+
+.profile-edit-form .form-group {
+  margin-bottom: 15px;
+}
+
+.profile-edit-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

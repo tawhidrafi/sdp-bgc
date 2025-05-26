@@ -1,0 +1,213 @@
+/* === CSS RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === BASE STYLING === */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === STRUCTURE ELEMENTS === */
+header,
+main,
+footer {
+  width: 100%;
+  display: block;
+}
+
+/* Optional spacing between sections */
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+main {
+  background-color: #fefefe;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 1rem 3rem;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Logo */
+.logo h1 {
+  font-size: 24px;
+  color: #007bff;
+  text-transform: uppercase;
+}
+
+.logo i {
+  margin-right: 10px;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 8px 10px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+/* Accessibility: focus outline */
+.nav-links a:focus {
+  outline: 2px dashed #007bff;
+  outline-offset: 2px;
+}
+
+.nav-links a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* Join Button */
+.join-btn {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #0056b3;
+}
+
+/* FOOTER */
+.site-footer {
+  background-color: #111;
+  color: #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.footer-top {
+  padding: 60px 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* ← fixed for better layout */
+  align-items: flex-start; /* align columns to top */
+  margin-bottom: 40px;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.footer-logo i {
+  margin-right: 10px;
+}
+
+.footer-desc {
+  line-height: 1.6;
+  color: #aaa;
+}
+
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer-column p,
+.footer-column li {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #ccc;
+  font-size: 20px;
+}
+
+.social-links a:hover {
+  color: #fff;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+  background-color: #0c0c0c;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 40px;
+}
+
+/* New unique class for bottom container */
+.footer-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.footer-bottom-container a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-bottom-container a:hover {
+  color: #fff;
+}
