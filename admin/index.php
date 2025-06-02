@@ -1,3 +1,31 @@
+<?php
+// Connect to the database
+$conn = new mysqli("localhost", "root", "", "edumarkethub");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Summary: Total users, active users, total courses, total approved payments
+$summaryQuery = "
+  SELECT
+    (SELECT COUNT(*) FROM users) AS total_users,
+    (SELECT COUNT(*) FROM users WHERE status = 'active') AS active_users,
+    (SELECT COUNT(*) FROM courses) AS total_courses,
+    (SELECT IFNULL(SUM(cr.price), 0) 
+      FROM payments p 
+      INNER JOIN courses cr ON cr.id = p.course_id 
+      WHERE p.status = 'approved') AS total_payments
+";
+$summaryResult = mysqli_query($conn, $summaryQuery);
+$summary = mysqli_fetch_assoc($summaryResult);
+
+// Recent users
+$recentUsersQuery = "SELECT name, email, registered_at, status FROM users ORDER BY registered_at DESC LIMIT 5";
+$recentUsersResult = mysqli_query($conn, $recentUsersQuery);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +35,7 @@
   <title>EduMarketHub - Admin</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -30,7 +56,7 @@
         <div class="card-icon"><i class="fas fa-users"></i></div>
         <div class="card-info">
           <h3>Total Users</h3>
-          <p>1,250</p>
+          <p><?= $summary['total_users'] ?></p>
         </div>
       </article>
 
@@ -38,7 +64,7 @@
         <div class="card-icon"><i class="fas fa-book"></i></div>
         <div class="card-info">
           <h3>Total Courses</h3>
-          <p>87</p>
+          <p><?= $summary['total_courses'] ?></p>
         </div>
       </article>
 
@@ -46,7 +72,7 @@
         <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
         <div class="card-info">
           <h3>Total Payments</h3>
-          <p>$45,000</p>
+          <p>$<?= number_format($summary['total_payments'], 2) ?></p>
         </div>
       </article>
 
@@ -54,10 +80,11 @@
         <div class="card-icon"><i class="fas fa-chart-line"></i></div>
         <div class="card-info">
           <h3>Active Users</h3>
-          <p>980</p>
+          <p><?= $summary['active_users'] ?></p>
         </div>
       </article>
     </section>
+
 
     <!-- Recent Users Table -->
     <section class="recent-users">
@@ -72,27 +99,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Michael Scott</td>
-            <td>michael@dundermifflin.com</td>
-            <td>2025-05-10</td>
-            <td><span class="status active">Active</span></td>
-          </tr>
-          <tr>
-            <td>Pam Beesly</td>
-            <td>pam@dundermifflin.com</td>
-            <td>2025-05-09</td>
-            <td><span class="status inactive">Inactive</span></td>
-          </tr>
-          <tr>
-            <td>Jim Halpert</td>
-            <td>jim@dundermifflin.com</td>
-            <td>2025-05-08</td>
-            <td><span class="status active">Active</span></td>
-          </tr>
+          <?php while ($user = mysqli_fetch_assoc($recentUsersResult)): ?>
+            <tr>
+              <td><?= htmlspecialchars($user['name']) ?></td>
+              <td><?= htmlspecialchars($user['email']) ?></td>
+              <td><?= date('Y-m-d', strtotime($user['registered_at'])) ?></td>
+              <td>
+                <span class="status <?= $user['status'] == 'active' ? 'active' : 'inactive' ?>">
+                  <?= ucfirst($user['status']) ?>
+                </span>
+              </td>
+            </tr>
+          <?php endwhile; ?>
         </tbody>
       </table>
     </section>
+
   </main>
 
   <!-- FOOTER -->

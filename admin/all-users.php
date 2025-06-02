@@ -1,3 +1,43 @@
+<?php
+// Connect to the database
+$conn = new mysqli("localhost", "root", "", "edumarkethub");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT 
+  u.id AS user_id,
+  u.name,
+  u.email,
+  u.registered_at,
+  u.status,
+  COUNT(DISTINCT CASE WHEN p.status = 'approved' THEN p.course_id END) AS enrolled,
+  COUNT(DISTINCT c.id) AS uploaded,
+  IFNULL(SUM(p_amount.amount_paid), 0) AS paid,
+  IFNULL(SUM(p_amount.amount_earned), 0) AS earned
+FROM users u
+LEFT JOIN courses c ON c.user_id = u.id
+LEFT JOIN payments p ON p.user_id = u.id
+LEFT JOIN (
+    SELECT 
+        p.id AS payment_id,
+        p.user_id,
+        p.course_id,
+        cr.price AS amount_paid,
+        cr.price AS amount_earned
+    FROM payments p
+    INNER JOIN courses cr ON cr.id = p.course_id
+    WHERE p.status = 'approved'
+) p_amount ON p_amount.payment_id = p.id
+GROUP BY u.id
+ORDER BY u.registered_at DESC;
+";
+
+
+$result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +47,7 @@
   <title>EduMarketHub - Admin</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -36,162 +74,22 @@
               <th>Uploaded</th>
               <th>Paid ($)</th>
               <th>Earned ($)</th>
-              <th>Status</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Jane Doe</td>
-              <td>jane@example.com</td>
-              <td>2025-04-10</td>
-              <td>3</td>
-              <td>1</td>
-              <td>120</td>
-              <td>45</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>John Smith</td>
-              <td>john@example.com</td>
-              <td>2025-03-22</td>
-              <td>5</td>
-              <td>2</td>
-              <td>250</td>
-              <td>110</td>
-              <td><span class="status inactive">Inactive</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Alice Green</td>
-              <td>alice@example.com</td>
-              <td>2025-02-28</td>
-              <td>2</td>
-              <td>1</td>
-              <td>80</td>
-              <td>35</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Mike Lee</td>
-              <td>mike@example.com</td>
-              <td>2025-05-01</td>
-              <td>4</td>
-              <td>3</td>
-              <td>190</td>
-              <td>90</td>
-              <td><span class="status inactive">Inactive</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Emily White</td>
-              <td>emily@example.com</td>
-              <td>2025-04-18</td>
-              <td>6</td>
-              <td>0</td>
-              <td>300</td>
-              <td>0</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>David Brown</td>
-              <td>david@example.com</td>
-              <td>2025-01-15</td>
-              <td>1</td>
-              <td>2</td>
-              <td>40</td>
-              <td>60</td>
-              <td><span class="status inactive">Inactive</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Linda Ray</td>
-              <td>linda@example.com</td>
-              <td>2025-03-11</td>
-              <td>2</td>
-              <td>2</td>
-              <td>150</td>
-              <td>100</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Robert Clark</td>
-              <td>robert@example.com</td>
-              <td>2025-02-01</td>
-              <td>0</td>
-              <td>1</td>
-              <td>0</td>
-              <td>20</td>
-              <td><span class="status inactive">Inactive</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Susan Moore</td>
-              <td>susan@example.com</td>
-              <td>2025-04-05</td>
-              <td>3</td>
-              <td>0</td>
-              <td>130</td>
-              <td>0</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Daniel Kim</td>
-              <td>daniel@example.com</td>
-              <td>2025-03-29</td>
-              <td>5</td>
-              <td>3</td>
-              <td>210</td>
-              <td>140</td>
-              <td><span class="status active">Active</span></td>
-              <td class="action-buttons">
-                <button class="btn activate">Activate</button>
-                <button class="btn hold">Hold</button>
-                <button class="btn deactivate">Deactivate</button>
-              </td>
-            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+              <tr>
+                <td><?= htmlspecialchars($row['name']) ?></td>
+                <td><?= htmlspecialchars($row['email']) ?></td>
+                <td><?= $row['registered_at'] ?></td>
+                <td><?= $row['enrolled'] ?></td>
+                <td><?= $row['uploaded'] ?></td>
+                <td><?= $row['paid'] ?></td>
+                <td><?= $row['earned'] ?></td>
+              </tr>
+            <?php endwhile; ?>
           </tbody>
+
         </table>
       </div>
     </section>

@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-  // Redirect to login page if not logged in
-  header("Location: http://localhost/edu/login.php");
-  exit;
-}
+// if (!isset($_SESSION['user_id'])) {
+//   // Redirect to login page if not logged in
+//   header("Location: http://localhost/edu/login.php");
+//   exit;
+// }
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // DB connection
@@ -86,9 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>EduMarketHub - User</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -134,12 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <div class="form-group">
             <label for="image">Cover Image</label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              required />
+            <input type="file" id="image" name="image" accept="image/*" required />
           </div>
 
           <div class="form-group">
@@ -158,12 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <div class="form-group">
             <label for="level">Skill Level</label>
-            <input
-              type="text"
-              id="level"
-              name="level"
-              placeholder="Beginner / Intermediate / Expert"
-              required />
+            <input type="text" id="level" name="level" placeholder="Beginner / Intermediate / Expert" required />
           </div>
 
           <!-- Right Column -->
@@ -190,11 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <!-- Full-width Details Field -->
           <div class="form-group full-width">
             <label for="details">Details</label>
-            <textarea
-              id="details"
-              name="details"
-              rows="4"
-              required></textarea>
+            <textarea id="details" name="details" rows="4" required></textarea>
           </div>
         </div>
 
