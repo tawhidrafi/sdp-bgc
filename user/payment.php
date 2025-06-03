@@ -1,5 +1,11 @@
 <?php
+
 session_start();
+if (!isset($_SESSION['user_id'])) {
+  header("Location: ../login.php");
+  exit();
+}
+
 $conn = new mysqli("localhost", "root", "", "edumarkethub");
 
 if ($conn->connect_error) {
@@ -29,14 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("iiss", $user_id, $course_id, $phone, $trxid);
     $stmt->execute();
     $stmt->close();
-    header("Location: payment-success.php");
+    header("Location: ../courses/detail.php/?id=" . $course_id);
     exit();
   } else {
     $error = "Missing information.";
   }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,3 +1,35 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+  header("Location: ../login.php");
+  exit();
+}
+$user_id = $_SESSION['user_id'];
+
+$conn = new mysqli("localhost", "root", "", "edumarkethub");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "
+  SELECT 
+    c.id, c.name, c.cover_image, c.user_id,
+    u.name AS author_name
+  FROM payments p
+  INNER JOIN courses c ON p.course_id = c.id
+  INNER JOIN users u ON u.id = c.user_id
+  WHERE p.user_id = ? AND p.status = 'approved'
+";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +39,7 @@
   <title>EduMarketHub - User</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -30,70 +60,27 @@
         </div>
 
         <div class="courses-grid">
-          <div class="course-item">
-            <a href="./../courses/detail.html">
-              <img
-                src="./assets/img/courses-1.jpg"
-                alt="React for Beginners"
-                class="course-image" />
-              <div class="course-content">
-                <h5 class="course-title">React for Beginners</h5>
-                <div class="course-footer">
-                  <span class="course-author">John Smith</span>
-                  <span class="course-progress">Progress: 45%</span>
-                </div>
+          <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+              <div class="course-item">
+                <a href="./../courses/detail.php?id=<?= $row['id'] ?>">
+                  <img src="../courses/assets/img/<?= htmlspecialchars($row['cover_image']) ?>"
+                    alt="<?= htmlspecialchars($row['name']) ?>" class="course-image" />
+                  <div class="course-content">
+                    <h5 class="course-title"><?= htmlspecialchars($row['name']) ?></h5>
+                    <div class="course-footer">
+                      <span class="course-author"><?= htmlspecialchars($row['author_name']) ?></span>
+                      <span class="course-progress">Progress: --%</span>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
-
-          <div class="course-item">
-            <a href="./../courses/detail.html">
-              <img
-                src="./assets/img/courses-2.jpg"
-                alt="Advanced CSS Techniques"
-                class="course-image" />
-              <div class="course-content">
-                <h5 class="course-title">Advanced CSS Techniques</h5>
-                <div class="course-footer">
-                  <span class="course-author">Emily Clark</span>
-                  <span class="course-progress">Progress: 80%</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="course-item">
-            <a href="./../courses/detail.html">
-              <img
-                src="./assets/img/courses-3.jpg"
-                alt="Python for Data Science"
-                class="course-image" />
-              <div class="course-content">
-                <h5 class="course-title">Python for Data Science</h5>
-                <div class="course-footer">
-                  <span class="course-author">Michael Lee</span>
-                  <span class="course-progress">Progress: 60%</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="course-item">
-            <a href="./../courses/detail.html">
-              <img
-                src="./assets/img/courses-4.jpg"
-                alt="UI/UX Fundamentals"
-                class="course-image" />
-              <div class="course-content">
-                <h5 class="course-title">UI/UX Fundamentals</h5>
-                <div class="course-footer">
-                  <span class="course-author">Anna Brown</span>
-                  <span class="course-progress">Progress: 20%</span>
-                </div>
-              </div>
-            </a>
-          </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <p>You haven’t enrolled in any courses yet.</p>
+          <?php endif; ?>
         </div>
+
       </div>
     </section>
   </main>

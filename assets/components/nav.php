@@ -8,7 +8,7 @@ echo '
       <nav class="nav-links">
         <a href="./index.php">Home</a>
         <a href="./about.php">About</a>
-        <a href="./courses/index.html">Courses</a>
+        <a href="./courses/index.php">Courses</a>
         <a href="./contact.php">Contact</a>
       </nav>
       <a href="./register.php" class="join-btn">Join Us</a>

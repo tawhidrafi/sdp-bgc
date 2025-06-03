@@ -26,6 +26,20 @@ if ($course_id > 0) {
 }
 
 $isOwner = $isLoggedIn && $course && $userId == $course['user_id'];
+$totalSales = 0;
+$totalRevenue = 0;
+
+if ($course) {
+  $salesSql = "SELECT COUNT(*) AS total_sales FROM payments 
+               WHERE course_id = $course_id AND status = 'approved'";
+  $salesResult = $conn->query($salesSql);
+  if ($salesResult && $salesResult->num_rows > 0) {
+    $salesData = $salesResult->fetch_assoc();
+    $totalSales = intval($salesData['total_sales']);
+    $totalRevenue = $totalSales * floatval($course['price']);
+  }
+}
+
 
 // Check if user purchased and approved
 $hasAccess = false;
@@ -66,7 +80,18 @@ if ($isLoggedIn && !$isOwner && $course) {
 
 <body>
 
-  <?php include('../assets/components/nav.php'); ?>
+  <header class="navbar">
+    <div class="logo">
+      <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="./index.php">Home</a>
+      <a href="./about.php">About</a>
+      <a href="./index.php">Courses</a>
+      <a href="./contact.php">Contact</a>
+    </nav>
+    <a href="./register.php" class="join-btn">Join Us</a>
+  </header>
 
   <main class="container">
     <section class="course-detail-section">
@@ -82,7 +107,7 @@ if ($isLoggedIn && !$isOwner && $course) {
 
             <figure class="course-image-wrapper">
               <img
-                src="<?= $course && $course['cover_image'] ? '../courses/assets/img/' . htmlspecialchars($course['cover_image']) : './assets/img/default.jpg' ?>"
+                src="<?= $course && $course['cover_image'] ? './assets/img/' . htmlspecialchars($course['cover_image']) : './assets/img/default.jpg' ?>"
                 alt="Course Header" class="course-image" />
             </figure>
 
@@ -99,19 +124,10 @@ if ($isLoggedIn && !$isOwner && $course) {
             <!-- OWNER SECTION -->
             <?php if ($isOwner): ?>
               <div class="owner-section">
-                <h3 class="section-heading">👑 Your Uploaded Course</h3>
-                <ul class="owner-stats">
-                  <li><strong>Sold:</strong> 125 copies</li>
-                  <li><strong>Revenue:</strong> $3,750</li>
-                </ul>
-                <div class="reviews-area">
-                  <h4>User Reviews</h4>
-                  <div class="review">
-                    <p><strong>Jane Doe:</strong> Loved the pace and examples! <em>Rating: 4/5</em></p>
-                  </div>
-                  <div class="review">
-                    <p><strong>John Smith:</strong> Great course content! <em>Rating: 5/5</em></p>
-                  </div>
+                <h3 class="section-heading">Your Uploaded Course</h3>
+                <div class="owner-stats">
+                  <p><strong>Total Copies Sold:</strong> <?= $totalSales ?></p>
+                  <p><strong>Total Revenue Generated:</strong> $<?= number_format($totalRevenue, 2) ?></p>
                 </div>
               </div>
 

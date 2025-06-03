@@ -1,3 +1,69 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+  header('Location: ../login.php');
+  exit();
+}
+
+$conn = new mysqli("localhost", "root", "", "edumarkethub");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT name, email, registered_at, profile_image FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_profile'])) {
+  $name = $_POST['edit-name'];
+  $email = $_POST['edit-email'];
+
+  $imageFileName = null;
+  $targetDir = "./assets/img/";
+
+  if (isset($_FILES['edit-avatar']) && $_FILES['edit-avatar']['error'] === UPLOAD_ERR_OK) {
+    $imageTmp = $_FILES['edit-avatar']['tmp_name'];
+    $originalName = basename($_FILES['edit-avatar']['name']);
+    $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+
+    // Validate image extension
+    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+    if (in_array($extension, $allowedTypes)) {
+      $imageFileName = "user_" . $user_id . "_" . time() . "." . $extension;
+      move_uploaded_file($imageTmp, $targetDir . $imageFileName);
+    }
+  }
+
+  // If a new image is uploaded, update profile_image too
+  if ($imageFileName) {
+    $update_sql = "UPDATE users SET name = ?, email = ?, profile_image = ? WHERE id = ?";
+    $stmt = $conn->prepare($update_sql);
+    $stmt->bind_param("sssi", $name, $email, $imageFileName, $user_id);
+  } else {
+    $update_sql = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+    $stmt = $conn->prepare($update_sql);
+    $stmt->bind_param("ssi", $name, $email, $user_id);
+  }
+
+  if ($stmt->execute()) {
+    header("Location: profile.php");
+    exit();
+  } else {
+    echo "<p style='color: red;'>Failed to update profile. Please try again.</p>";
+  }
+}
+
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +73,7 @@
   <title>EduMarketHub - User</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -28,41 +92,34 @@
       <!-- Profile Card -->
       <div class="profile-card">
         <div class="profile-image">
-          <img src="./assets/img/user.jpg" alt="User Avatar" />
+          <img
+            src="<?= !empty($user['profile_image']) ? './assets/img/' . htmlspecialchars($user['profile_image']) : './assets/img/default.jpg' ?>"
+            alt="User Avatar" />
         </div>
 
         <!-- View Mode -->
         <div class="profile-info view-mode">
-          <p><strong>Name:</strong> <span id="view-name">John Doe</span></p>
-          <p>
-            <strong>Email:</strong>
-            <span id="view-email">john@example.com</span>
-          </p>
-          <p>
-            <strong>Phone:</strong>
-            <span id="view-phone">+880 123456789</span>
-          </p>
-          <p><strong>Joined:</strong> March 15, 2023</p>
+          <p><strong>Name:</strong> <span id="view-name"><?= htmlspecialchars($user['name']) ?></span></p>
+          <p><strong>Email:</strong> <span id="view-email"><?= htmlspecialchars($user['email']) ?></span></p>
+          <p><strong>Joined:</strong> <?= date("F j, Y", strtotime($user['registered_at'])) ?></p>
         </div>
 
         <!-- Edit Mode -->
-        <form class="profile-edit-form edit-mode" style="display: none">
+        <form class="profile-edit-form edit-mode" style="display: none" action="" method="POST"
+          enctype="multipart/form-data">
           <div class="form-group">
             <label for="edit-name">Name:</label>
-            <input type="text" id="edit-name" value="John Doe" />
+            <input type="text" id="edit-name" value="<?= htmlspecialchars($user['name']) ?>" name="edit-name" />
           </div>
           <div class="form-group">
             <label for="edit-email">Email:</label>
-            <input type="email" id="edit-email" value="john@example.com" />
-          </div>
-          <div class="form-group">
-            <label for="edit-phone">Phone:</label>
-            <input type="text" id="edit-phone" value="+880 123456789" />
+            <input type="email" id="edit-email" value="<?= htmlspecialchars($user['email']) ?>" name="edit-email" />
           </div>
           <div class="form-group">
             <label for="edit-avatar">Profile Picture:</label>
-            <input type="file" id="edit-avatar" />
+            <input type="file" id="edit-avatar" name="edit-avatar" />
           </div>
+          <input type="submit" name="save_profile" value="Save" />
         </form>
       </div>
 
@@ -82,6 +139,7 @@
     const toggleBtn = document.getElementById("toggleEditBtn");
     const viewMode = document.querySelector(".view-mode");
     const editMode = document.querySelector(".edit-mode");
+    const form = document.querySelector(".profile-edit-form");
 
     let isEditing = false;
 
@@ -91,22 +149,11 @@
       if (isEditing) {
         viewMode.style.display = "none";
         editMode.style.display = "block";
-        toggleBtn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
-      } else {
-        // OPTIONAL: You can sync edited data back to view mode here
-        document.getElementById("view-name").innerText =
-          document.getElementById("edit-name").value;
-        document.getElementById("view-email").innerText =
-          document.getElementById("edit-email").value;
-        document.getElementById("view-phone").innerText =
-          document.getElementById("edit-phone").value;
-
-        viewMode.style.display = "block";
-        editMode.style.display = "none";
-        toggleBtn.innerHTML = '<i class="fas fa-edit"></i> Edit Profile';
+        toggleBtn.style.display = 'none';
       }
     });
   </script>
+
 </body>
 
 </html>

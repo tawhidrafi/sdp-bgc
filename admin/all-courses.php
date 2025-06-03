@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['admin_id'])) {
+  header("Location: http://localhost/edu/admin/login.php");
+  exit;
+}
+
 // Connect to the database
 $conn = new mysqli("localhost", "root", "", "edumarkethub");
 

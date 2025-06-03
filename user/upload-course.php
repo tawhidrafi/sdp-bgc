@@ -1,20 +1,17 @@
 <?php
 session_start();
 
-// if (!isset($_SESSION['user_id'])) {
-//   // Redirect to login page if not logged in
-//   header("Location: http://localhost/edu/login.php");
-//   exit;
-// }
-// Handle form submission
+if (!isset($_SESSION['user_id'])) {
+  header("Location: ../login.php");
+  exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // DB connection
   $conn = new mysqli("localhost", "root", "", "edumarkethub");
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 
-  // Get form fields
   $name = trim($_POST['name']);
   $category = trim($_POST['category']);
   $type = $_POST['type'];
@@ -26,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $details = trim($_POST['details']);
   $user_id = $_SESSION['user_id'];
 
-  // File handling
   $image = $_FILES['image'];
   $courseFile = $_FILES['file'];
 
@@ -41,23 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $errors = [];
 
-  // Validate ZIP file
   $ext = pathinfo($courseFileName, PATHINFO_EXTENSION);
   if (strtolower($ext) !== 'zip') {
     $errors[] = "Course file must be a .zip archive.";
   }
 
-  // Move files
   if (empty($errors)) {
     if (
       move_uploaded_file($image['tmp_name'], $imagePath) &&
       move_uploaded_file($courseFile['tmp_name'], $coursePath)
     ) {
-      // Insert into DB
       $stmt = $conn->prepare("INSERT INTO courses (user_id, name, category, cover_image, type, duration, level, lectures, language, price, details, course_file)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $stmt->bind_param("issssssissss", $user_id, $name, $category, $imageName, $type, $duration, $level, $lectures, $language, $price, $details, $courseFileName);
-
 
       if ($stmt->execute()) {
         $success = "Course uploaded successfully!";
@@ -75,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $conn->close();
 }
+
 ?>
 
 <!DOCTYPE html>

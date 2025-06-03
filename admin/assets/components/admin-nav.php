@@ -26,7 +26,7 @@ echo '
           <a href="./payments.php">Payments</a>
         </nav>
         <div class="navbar-right">
-          <a href="#" class="join-btn logout-btn">Log Out</a>
+          <a href="./logout.php" class="join-btn logout-btn">Log Out</a>
         </div>
       </div>
     </header>
