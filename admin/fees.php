@@ -18,21 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['approve_payment_id'])) {
     $paymentId = $_POST['approve_payment_id'];
 
-    $stmt = $conn->prepare("UPDATE payments SET status = 'approved' WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE registration_fees SET status = 'approved' WHERE id = ?");
     $stmt->bind_param("s", $paymentId);
     $stmt->execute();
 
-    header("Location: payments.php");
+    header("Location: ./fees.php");
     exit;
 
   } elseif (isset($_POST['reject_payment_id'])) {
     $paymentId = $_POST['reject_payment_id'];
 
-    $stmt = $conn->prepare("UPDATE payments SET status = 'rejected' WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE registration_fees SET status = 'rejected' WHERE id = ?");
     $stmt->bind_param("s", $paymentId);
     $stmt->execute();
 
-    header("Location: payments.php");
+    header("Location: ./fees.php");
     exit;
   }
 }
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
-  <link rel="stylesheet" href="./assets/css/payments.css" />
+  <link rel="stylesheet" href="./assets/css/fees.css" />
 </head>
 
 <body>
@@ -69,11 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tr>
               <th>ID</th>
               <th>Date</th>
-              <th>Course</th>
-              <th>Creator</th>
               <th>User</th>
               <th>User ID</th>
-              <th>Method</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -82,18 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php
             $query = "
   SELECT 
-    payments.id,
-    payments.created_at,
-    payments.status,
+    registration_fees.id,
+    registration_fees.created_at,
+    registration_fees.status,
     users.name AS user_name,
-    users.id AS user_id,
-    courses.name AS course_name,
-    course_creators.name AS creator_name
-  FROM payments
-  JOIN users ON payments.user_id = users.id
-  JOIN courses ON payments.course_id = courses.id
-  JOIN users AS course_creators ON courses.user_id = course_creators.id
-  ORDER BY payments.created_at DESC
+    users.id AS user_id
+  FROM registration_fees
+  JOIN users ON registration_fees.user_id = users.id
+  ORDER BY registration_fees.created_at DESC
 ";
 
             $result = $conn->query($query);
@@ -104,11 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<tr>
       <td>#{$row['id']}</td>
       <td>{$row['created_at']}</td>
-      <td>{$row['course_name']}</td>
-      <td>{$row['creator_name']}</td>
       <td>{$row['user_name']}</td>
       <td>#{$row['user_id']}</td>
-      <td>N/A</td> <!-- Placeholder for method -->
       <td><span class='status {$statusClass}'>" . ucfirst($row['status']) . "</span></td>
       <td class='action-buttons'>
         <form method='post' style='display:inline-block;'>

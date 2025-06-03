@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT name, email, registered_at, profile_image FROM users WHERE id = ?";
+$sql = "SELECT name, email, registered_at, profile_image, bkash_num FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -24,6 +24,7 @@ $user = $result->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_profile'])) {
   $name = $_POST['edit-name'];
   $email = $_POST['edit-email'];
+  $bkash_num = $_POST['bkash_num'];
 
   $imageFileName = null;
   $targetDir = "./assets/img/";
@@ -41,15 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_profile'])) {
     }
   }
 
-  // If a new image is uploaded, update profile_image too
   if ($imageFileName) {
-    $update_sql = "UPDATE users SET name = ?, email = ?, profile_image = ? WHERE id = ?";
+    $update_sql = "UPDATE users SET name = ?, email = ?, profile_image = ?, bkash_num = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("sssi", $name, $email, $imageFileName, $user_id);
+    $stmt->bind_param("ssssi", $name, $email, $imageFileName, $bkash_num, $user_id);
   } else {
-    $update_sql = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+    $update_sql = "UPDATE users SET name = ?, email = ?, bkash_num = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("ssi", $name, $email, $user_id);
+    $stmt->bind_param("sssi", $name, $email, $bkash_num, $user_id);
   }
 
   if ($stmt->execute()) {
@@ -102,6 +102,9 @@ $conn->close();
           <p><strong>Name:</strong> <span id="view-name"><?= htmlspecialchars($user['name']) ?></span></p>
           <p><strong>Email:</strong> <span id="view-email"><?= htmlspecialchars($user['email']) ?></span></p>
           <p><strong>Joined:</strong> <?= date("F j, Y", strtotime($user['registered_at'])) ?></p>
+          <p><strong>Bkash Number:</strong> <span
+              id="view-email"><?= htmlspecialchars(isset($user['bkash_num']) ? $user['bkash_num'] : 'Not yet Submitted', ENT_QUOTES, 'UTF-8') ?></span>
+          </p>
         </div>
 
         <!-- Edit Mode -->
@@ -114,6 +117,12 @@ $conn->close();
           <div class="form-group">
             <label for="edit-email">Email:</label>
             <input type="email" id="edit-email" value="<?= htmlspecialchars($user['email']) ?>" name="edit-email" />
+          </div>
+          <div class="form-group">
+            <label for="edit-email">Bkash Number:</label>
+            <input type="tel" id="edit-email"
+              value="<?= htmlspecialchars(isset($user['bkash_num']) ? $user['bkash_num'] : '', ENT_QUOTES, 'UTF-8') ?>"
+              name="bkash_num" />
           </div>
           <div class="form-group">
             <label for="edit-avatar">Profile Picture:</label>

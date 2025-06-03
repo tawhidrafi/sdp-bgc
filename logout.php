@@ -1,5 +1,9 @@
 <?php
 session_start(); // Start the session
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./login.php");
+    exit();
+}
 
 // Destroy all session data
 $_SESSION = [];

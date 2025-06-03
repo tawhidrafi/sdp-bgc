@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['user_id'])) {
+  header("Location: ./user/index.php");
+  exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Database connection using MySQLi
@@ -65,36 +69,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <!-- Login Form -->
       <form id="login-form" action="" method="post">
-        <?php if (isset($error)) : ?>
+        <?php if (isset($error)): ?>
           <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
         <?php endif; ?>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Enter your email" />
+          <input type="email" id="email" name="email" required placeholder="Enter your email" />
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            placeholder="Enter your password" />
+          <input type="password" id="password" name="password" required placeholder="Enter your password" />
         </div>
 
         <button type="submit">Login</button>
       </form>
 
       <div class="links">
-        <a href="register.html">Don't have an account? Register here</a>
-        <a href="#">Forgot Password?</a>
+        <a href="register.php">Don't have an account? Register here</a>
       </div>
     </div>
   </div>

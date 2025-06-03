@@ -6,11 +6,31 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
+$conn = new mysqli("localhost", "root", "", "edumarkethub");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Check if the user's registration fee is approved
+$query = "SELECT * FROM registration_fees WHERE user_id = ? AND status = 'approved'";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$feeApproved = ($result->num_rows > 0); // Boolean flag for approval status
+
+$stmt->close();
+
+if (!$feeApproved) {
+  header("Location: ./pay-reg-fee.php");
+  exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $conn = new mysqli("localhost", "root", "", "edumarkethub");
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
 
   $name = trim($_POST['name']);
   $category = trim($_POST['category']);
@@ -48,13 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       move_uploaded_file($courseFile['tmp_name'], $coursePath)
     ) {
       $stmt = $conn->prepare("INSERT INTO courses (user_id, name, category, cover_image, type, duration, level, lectures, language, price, details, course_file)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $stmt->bind_param("issssssissss", $user_id, $name, $category, $imageName, $type, $duration, $level, $lectures, $language, $price, $details, $courseFileName);
 
       if ($stmt->execute()) {
         $success = "Course uploaded successfully!";
         header("Refresh: 2; URL = index.php"); // Redirect after 2 seconds
-
       } else {
         $errors[] = "Database error: " . $stmt->error;
       }
@@ -67,7 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $conn->close();
 }
-
 ?>
 
 <!DOCTYPE html>

@@ -4,13 +4,11 @@ session_start();
 $isLoggedIn = isset($_SESSION['user_id']);
 $userId = $isLoggedIn ? $_SESSION['user_id'] : 0;
 
-// DB Connection
 $conn = new mysqli("localhost", "root", "", "edumarkethub");
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Get course ID
 $course_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $course = null;
 
@@ -40,20 +38,16 @@ if ($course) {
   }
 }
 
-
-// Check if user purchased and approved
 $hasAccess = false;
 $hasPendingPayment = false;
 
 if ($isLoggedIn && !$isOwner && $course) {
-  // Approved
   $approvedSql = "SELECT * FROM payments 
                   WHERE user_id = $userId AND course_id = $course_id AND status = 'approved' LIMIT 1";
   $approvedResult = $conn->query($approvedSql);
   if ($approvedResult && $approvedResult->num_rows > 0) {
     $hasAccess = true;
   } else {
-    // Pending
     $pendingSql = "SELECT * FROM payments 
                    WHERE user_id = $userId AND course_id = $course_id AND status = 'pending' LIMIT 1";
     $pendingResult = $conn->query($pendingSql);
@@ -85,12 +79,11 @@ if ($isLoggedIn && !$isOwner && $course) {
       <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
     </div>
     <nav class="nav-links">
-      <a href="./index.php">Home</a>
-      <a href="./about.php">About</a>
+      <a href="../index.php">Home</a>
+      <a href="../about.php">About</a>
       <a href="./index.php">Courses</a>
-      <a href="./contact.php">Contact</a>
+      <a href="../contact.php">Contact</a>
     </nav>
-    <a href="./register.php" class="join-btn">Join Us</a>
   </header>
 
   <main class="container">
@@ -140,10 +133,11 @@ if ($isLoggedIn && !$isOwner && $course) {
               </div>
 
               <!-- PENDING PAYMENT -->
+              <!-- Change this section in detail.php -->
             <?php elseif ($hasPendingPayment): ?>
               <div class="pending-section">
                 <h3 class="section-heading">⏳ Payment Pending</h3>
-                <p>Your payment is being reviewed. You’ll be notified when it’s approved.</p>
+                <p>Your payment is waiting for approval from the course owner.</p>
               </div>
 
               <!-- GUEST USER -->

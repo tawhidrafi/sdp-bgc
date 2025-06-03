@@ -16,10 +16,10 @@ echo '
         <div class="footer-column">
           <h3>Get In Touch</h3>
           <p>
-            <i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA
+            <i class="fa fa-map-marker-alt"></i> Chandgaon, Chatoogram, Bangladesh
           </p>
-          <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
-          <p><i class="fa fa-envelope"></i> info@example.com</p>
+          <p><i class="fa fa-phone-alt"></i> +880 1234 141214</p>
+          <p><i class="fa fa-envelope"></i> contact@edumarkethub.com</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-facebook-f"></i></a>

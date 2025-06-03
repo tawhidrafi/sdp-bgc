@@ -7,9 +7,7 @@
   <title>EduMarketHub - Home</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/global.css" />
@@ -25,12 +23,9 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
-        <h2 class="hero-subtitle">Learn From Home</h2>
-        <h1 class="hero-title">Find Your Course</h1>
-        <div class="search-bar">
-          <input type="text" placeholder="Keyword" />
-          <button class="search-btn">Search</button>
-        </div>
+        <h2 class="hero-subtitle">Learn from home...</h2>
+        <h2 class="hero-subtitle">Share with others...</h2>
+        <h2 class="hero-subtitle">Learn with your friends...</h2>
       </div>
     </section>
 

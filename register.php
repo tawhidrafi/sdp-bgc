@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+  header("Location: ./user/index.php");
+  exit();
+}
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Database connection
@@ -76,47 +81,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h1>Create an Account</h1>
 
       <!-- Register Form -->
-      <form
-        id="register-form"
-        action=""
-        method="POST">
+      <form id="register-form" action="" method="POST">
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Enter your full name" />
+          <input type="text" id="name" name="name" required placeholder="Enter your full name" />
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Enter your email" />
+          <input type="email" id="email" name="email" required placeholder="Enter your email" />
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            placeholder="Create a password" />
+          <input type="password" id="password" name="password" required placeholder="Create a password" />
         </div>
 
         <div class="form-group">
           <label for="confirm-password">Confirm Password</label>
-          <input
-            type="password"
-            id="confirm-password"
-            name="confirm-password"
-            required
+          <input type="password" id="confirm-password" name="confirm-password" required
             placeholder="Confirm your password" />
         </div>
 
@@ -124,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
 
       <div class="links">
-        <a href="login.html">Already have an account? Login here</a>
+        <a href="login.php">Already have an account? Login here</a>
       </div>
     </div>
   </div>

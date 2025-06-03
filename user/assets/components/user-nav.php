@@ -1,6 +1,6 @@
 <?php
 // Accessing session variables
-$userName =  $_SESSION['user_name'] ?? 'User';
+$userName = $_SESSION['user_name'] ?? 'User';
 
 echo '
     <header>
@@ -10,10 +10,10 @@ echo '
           <h1><i class="fa fa-book-reader"></i> EduMarketHub</h1>
         </div>
         <nav class="navbar-right nav-links">
-          <a href="./../index.php">Home</a>
-          <a href="./../about.php">About</a>
-          <a href="./../courses/index.html">Courses</a>
-          <a href="./../contact.php">Contact</a>
+          <a href="../index.php">Home</a>
+          <a href="../about.php">About</a>
+          <a href="../courses/index.php">Courses</a>
+          <a href="../contact.php">Contact</a>
         </nav>
       </div>
 
@@ -27,10 +27,11 @@ echo '
           <a href="./enrolled.php">My Courses</a>
           <a href="./uploaded.php">Uploaded Courses</a>
           <a href="./upload-course.php">Upload Course</a>
+          <a href="./manage-payments.php">Earnings</a>
           <a href="./profile.php">My Profile</a>
         </nav>
         <div class="navbar-right">
-          <a href="./../logout.php" class="join-btn logout-btn">Log Out</a>
+          <a href="../logout.php" class="join-btn logout-btn">Log Out</a>
         </div>
       </div>
     </header>

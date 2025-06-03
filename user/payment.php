@@ -15,18 +15,37 @@ if ($conn->connect_error) {
 $isLoggedIn = isset($_SESSION['user_id']);
 $user_id = $isLoggedIn ? $_SESSION['user_id'] : 0;
 
-// Get course details from GET (to show on the page)
+// Check if the user's registration fee is approved
+$query = "SELECT * FROM registration_fees WHERE user_id = ? AND status = 'approved'";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$feeApproved = ($result->num_rows > 0); // Boolean flag for approval status
+
+$stmt->close();
+
+if (!$feeApproved) {
+  header("Location: ./pay-reg-fee.php");
+  exit();
+}
+
 $course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 0;
 $course = null;
 if ($course_id > 0) {
-  $result = $conn->query("SELECT * FROM courses WHERE id = $course_id LIMIT 1");
+  $result = $conn->query("SELECT c.*, u.bkash_num 
+                            FROM courses c 
+                            JOIN users u ON c.user_id = u.id 
+                            WHERE c.id = $course_id LIMIT 1");
   if ($result && $result->num_rows > 0) {
     $course = $result->fetch_assoc();
   }
 }
 
-// Handle form submission
+// Handle form submission only if registration fee is approved
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
   $phone = $_POST['phone'];
   $trxid = $_POST['trxid'];
 
@@ -41,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error = "Missing information.";
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <p>
               Send exactly <strong>$<?= htmlspecialchars($course['price']) ?></strong> to bKash
-              <strong>01712-121212</strong>.
+              <strong><?= htmlspecialchars($course['bkash_num'] ?? 'Error') ?></strong>.
             </p>
           <?php else: ?>
             <p style="color:red;">Invalid course.</p>
@@ -107,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <div class="bkash-info-box">
                 <p>
                   <strong>bKash Number:</strong>
-                  <span class="bkash-number">01712-121212</span>
+                  <span class="bkash-number"><?= htmlspecialchars($course['bkash_num'] ?? 'Error') ?></span>
                 </p>
                 <p>
                   Send the amount <strong>exactly $49.00</strong> to the bKash

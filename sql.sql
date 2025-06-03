@@ -19,6 +19,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   profile_image VARCHAR(255),
   bio TEXT,
+  bkash_num VARCHAR(150) UNIQUE,
   registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   status ENUM('active', 'inactive') DEFAULT 'active'
 );
@@ -53,13 +54,11 @@ CREATE TABLE payments (
   FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
-
-CREATE TABLE registration_fees (
+CREATE TABLE messages (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  phone VARCHAR(20),
-  trxid VARCHAR(100),
-  status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  name VARCHAR(100),
+  email VARCHAR(100),
+  subject VARCHAR(100),
+  message TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

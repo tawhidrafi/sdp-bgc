@@ -9,7 +9,7 @@ echo '
         <nav class="navbar-right nav-links">
           <a href="./../index.php">Home</a>
           <a href="./../about.php">About</a>
-          <a href="./../courses/index.html">Courses</a>
+          <a href="./../courses/index.php">Courses</a>
           <a href="./../contact.php">Contact</a>
         </nav>
       </div>
@@ -23,7 +23,8 @@ echo '
           <a href="./index.php">Dashboard</a>
           <a href="./all-courses.php">All Courses</a>
           <a href="./all-users.php">All Users</a>
-          <a href="./payments.php">Payments</a>
+          <a href="./fees.php">Registration Fees</a>
+          <a href="./messages.php">Messages</a>
         </nav>
         <div class="navbar-right">
           <a href="./logout.php" class="join-btn logout-btn">Log Out</a>
