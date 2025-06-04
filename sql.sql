@@ -54,6 +54,16 @@ CREATE TABLE payments (
   FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
+CREATE TABLE registration_fees (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  phone VARCHAR(20),
+  trxid VARCHAR(100),
+  status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 CREATE TABLE messages (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),

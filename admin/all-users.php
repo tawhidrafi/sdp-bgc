@@ -21,8 +21,7 @@ $sql = "SELECT
   u.status,
   COUNT(DISTINCT CASE WHEN p.status = 'approved' THEN p.course_id END) AS enrolled,
   COUNT(DISTINCT c.id) AS uploaded,
-  IFNULL(SUM(p_amount.amount_paid), 0) AS paid,
-  IFNULL(SUM(p_amount.amount_earned), 0) AS earned
+  IFNULL(SUM(p_amount.amount_paid), 0) AS paid
 FROM users u
 LEFT JOIN courses c ON c.user_id = u.id
 LEFT JOIN payments p ON p.user_id = u.id
@@ -31,8 +30,7 @@ LEFT JOIN (
         p.id AS payment_id,
         p.user_id,
         p.course_id,
-        cr.price AS amount_paid,
-        cr.price AS amount_earned
+        cr.price AS amount_paid
     FROM payments p
     INNER JOIN courses cr ON cr.id = p.course_id
     WHERE p.status = 'approved'
@@ -80,7 +78,6 @@ $result = mysqli_query($conn, $sql);
               <th>Enrolled</th>
               <th>Uploaded</th>
               <th>Paid ($)</th>
-              <th>Earned ($)</th>
             </tr>
           </thead>
           <tbody>
@@ -92,7 +89,6 @@ $result = mysqli_query($conn, $sql);
                 <td><?= $row['enrolled'] ?></td>
                 <td><?= $row['uploaded'] ?></td>
                 <td><?= $row['paid'] ?></td>
-                <td><?= $row['earned'] ?></td>
               </tr>
             <?php endwhile; ?>
           </tbody>
